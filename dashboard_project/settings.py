@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'financial_app',
     'inventory_app',
     'my_site',
+    'pos_app'
 
 ]
 

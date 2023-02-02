@@ -23,5 +23,6 @@ urlpatterns = [
     path('', include('my_site.urls')),
     path('financials/', include('financial_app.urls')),
     path('inventory/', include('inventory_app.urls')),
+    path('sales/', include('pos_app.urls')),
 
 ] 
