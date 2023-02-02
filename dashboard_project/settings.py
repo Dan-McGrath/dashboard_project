@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'my_site',
     'pos_app',
     'labor_app',
-    
+    'view_helpers'
 
 ]
 

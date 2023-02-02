@@ -17,11 +17,7 @@ class Item(models.Model):
     def __str__(self):
         return self.name
 
-    def _str__(self):
-        return self.description
-
-    def __str__(self):
-        return self.distributor
+    
 
     def add_item(self):
         pass
@@ -36,5 +32,10 @@ class Item(models.Model):
 class Order(models.Model):
     item_id = models.ForeignKey(Item, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=0)
-    total_cost = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
+    date = models.DateField(auto_now_add=True)
+    
 
+    def get_total_cost(self):
+        return self.quantity * self.item_id.unit_cost
+    
+    

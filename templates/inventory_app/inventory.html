@@ -1,7 +1,11 @@
+{% extends 'my_site/base.html' %}
 {% load static %}
 
 <link rel="stylesheet" href="{% static 'style.css' %}">  
-
-{% for inventory in inven %}
-<h1>{{inventory.item}}</h1>
-<p>{{inventory.count}}</p>
+{% block content %}
+{% for item in items %}
+<h3>{{item.name}}</h3>
+<p>{{item.count}}</p>
+<p>{{item.unit_cost}}</p>
+{% endfor %}
+{% endblock %}

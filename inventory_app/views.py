@@ -1,7 +1,9 @@
 from django.shortcuts import render
-from .models import Inventory, Item
+from .models import Item, Order
 
 # Create your views here.
-def inventory(request):
-    inven = Inventory.objects.all()
-    return render(request, 'inventory.html', {'inven': inven})
+def inventory_home(request):
+    items = Item.objects.all()
+    return render(request, 'inventory_app/inventory.html', {'items': items})
+
+    
