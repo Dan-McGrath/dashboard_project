@@ -33,6 +33,8 @@ class Product(models.Model):
     product_count = models.IntegerField(default=0)
 
 
+    def __str__(self):
+        return self.name
 
 class Order(models.Model):
     item_id = models.ForeignKey(Item, on_delete=models.CASCADE)
