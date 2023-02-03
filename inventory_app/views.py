@@ -7,9 +7,9 @@ from .models import Item, Order, Product
 
 #Inventory home page
 def home(request):
-    context = []
+    context = {}
 
-    return render(request, 'inventory_app.inventory_home.html', context)
+    return render(request, 'inventory_app/inventory_home.html', context)
 
 
 # Views for Product model
@@ -23,16 +23,19 @@ class ProductCreate(CreateView):
     model = Product
     template_name = 'inventory_app.product_create_form.html'
     fields = ['item_id', 'name', 'description', 'sales_cost', 'product_count']
+    #success_url = reverse()
 
 class ProductUpdate(UpdateView):
     model = Product
     template_name = 'inventory_app.product_update_form.html'
     fields = ['item_id', 'name', 'description', 'sales_cost', 'product_count']
+    #success_url = reverse()
 
 class ProductDelete(DeleteView):
     model = Product
     template_name = 'inventory_app.product_delete_form.html'
-    fields = ['item_id', 'name', 'description', 'sales_cost', 'product_count'] 
+    fields = ['item_id', 'name', 'description', 'sales_cost', 'product_count']
+    #success_url = reverse() 
 
 #Views for Item model
 
@@ -44,6 +47,7 @@ class ItemCreate(CreateView):
     model = Item
     template_name = 'inventory_app.item_create_form.html'
     fields = ['name', 'description', 'distributor', 'unit_cost', 'item_count']
+    #success_url = reverse()
 
 class ItemUpdate(UpdateView):
     model = Item
@@ -54,6 +58,7 @@ class ItemDelete(DeleteView):
     model = Item
     template_name = 'inventory_app.item_delete_form.html'
     fields = ['name', 'description', 'distributor', 'unit_cost', 'item_count']
+    #success_url = reverse()
 
 
 #Views for Order model
@@ -67,16 +72,19 @@ class OrderCreate(CreateView):
     model = Order
     template_name = 'inventory_app.order_create_form.html'
     fields = ['item_id', 'quantity', 'date']
+    #success_url = reverse()
 
 class OrderUpdate(UpdateView):
     model = Order
     template_name = 'inventory_app.order_update_form.html'
     fields = ['item_id', 'quantity', 'date']
+    #success_url = reverse()
 
 class OrderDelete(DeleteView):
     model = Order
     template_name = 'inventory_app.order_delete_form.html'
     fields = ['item_id', 'quantity', 'date']
+    #success_url = reverse()
 
 
    
