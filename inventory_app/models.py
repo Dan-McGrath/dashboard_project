@@ -16,17 +16,22 @@ class Item(models.Model):
     
     def __str__(self):
         return self.name
-
-    
-
+ 
     def add_item(self):
         pass
-    
-    
     
     class Meta:
         ordering = ['name']
         verbose_name = 'item'
+
+
+class Product(models.Model):
+    item_id = models.ForeignKey(Item, on_delete=models.CASCADE)
+    name = models.CharField(max_length=30, unique=True)
+    description = models.CharField(max_length=50, blank=True)
+    sales_cost = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
+    product_count = models.IntegerField(default=0)
+
 
 
 class Order(models.Model):
