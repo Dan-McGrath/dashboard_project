@@ -1,0 +1,30 @@
+{% extends 'my_site/base.html' %}
+
+
+{% block content %}
+<h2>Product Inventory</h2>
+<table id="product">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Sales Price</th>
+        <th>Current Available</th>
+        <th> </th>
+        <th> </th>
+    </tr>
+    <tr>
+    {% for product in product_list %}
+    </tr>
+    <tr>
+        <td>{{ product.name }}</td>
+        <td>{{ product.description}}</td>
+        <td>{{ product.sales_cost }}</td>
+        <td>{{ product.product_count }}</td>
+        <td><a href="{% url 'productupdate' product.id %}">Edit</a></td>
+        <td><a href="{% url 'productdelete' product.id %}">Delete</a></td>
+        <td></td>
+    <tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

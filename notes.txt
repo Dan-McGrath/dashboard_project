@@ -1,2 +1,10 @@
 use pos_app as middle man for financial_app and inventory_app
 pos_app will have models representing a transaction sending financial data to the financial_app and updating inventory based on sale_items
+
+name urls so that we can call reverse if needed:
+    need to update:
+        main url 
+        my_site.url
+
+each app will have a home page with a breakdown of the information they hold 
+    will have pointers to more detailed information

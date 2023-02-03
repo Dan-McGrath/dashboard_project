@@ -4,6 +4,9 @@ from django.db import models
 
 # Create your models here.
 
+
+#Item Model
+
 class Item(models.Model):
     name = models.CharField(max_length=30, unique=True)
     description = models.CharField(max_length=50, blank=True)
@@ -25,6 +28,8 @@ class Item(models.Model):
         verbose_name = 'item'
 
 
+#Product Model
+
 class Product(models.Model):
     item_id = models.ForeignKey(Item, on_delete=models.CASCADE)
     name = models.CharField(max_length=30, unique=True)
@@ -35,6 +40,9 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
+#Order Model        
 
 class Order(models.Model):
     item_id = models.ForeignKey(Item, on_delete=models.CASCADE)
