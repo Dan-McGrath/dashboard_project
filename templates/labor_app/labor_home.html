@@ -1,7 +1,10 @@
 {% extends 'my_site/base.html' %}
-{% load static %}
 
-<link rel="stylesheet" href="{% static 'style.css' %}">  
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'style.css' %}">    
+{% endblock %}
+
 {% block content %}
 <h2>Employees</h2>
 
