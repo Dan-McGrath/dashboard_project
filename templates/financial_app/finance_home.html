@@ -2,10 +2,13 @@
 
 {% load static %}
 {% block head %}
-<link rel="stylesheet" href="{% static 'style.css' %}">    
+<link rel="stylesheet" href="{% static 'my_site/style.css' %}">
+<link rel="stylesheet" href="{% static 'financial_app/financeHome.css' %}">    
 {% endblock %}
 
 {% block content %}
-<h2>Finances</h2>
+<div class="financeHome">
+    <h2>Finances</h2>
+</div>
 
 {% endblock %}

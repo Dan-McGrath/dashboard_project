@@ -2,10 +2,13 @@
 
 {% load static %}
 {% block head %}
-<link rel="stylesheet" href="{% static 'style.css' %}">    
+<link rel="stylesheet" href="{% static 'my_site/style.css' %}">
+<link rel="stylesheet" href="{% static 'inventory_app/inventoryHome.css' %}">    
 {% endblock %}
 
 {% block content %}
-<h2>Product Inventory</h2>
 
+<div class="inventoryHome">
+    <h2>Product Inventory</h2>
+</div>
 {% endblock %}

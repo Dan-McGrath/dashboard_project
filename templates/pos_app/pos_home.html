@@ -2,10 +2,13 @@
 
 {% load static %}
 {% block head %}
-<link rel="stylesheet" href="{% static 'style.css' %}">    
+<link rel="stylesheet" href="{% static 'my_site/style.css' %}">
+<link rel="stylesheet" href="{% static 'pos_app/posHome.css' %}">  
 {% endblock %}
 
 {% block content %}
-<h2>Sales Inform</h2>
 
+<div class="posHome">
+    <h2>Sales Information</h2>
+</div>
 {% endblock %}
