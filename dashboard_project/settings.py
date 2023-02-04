@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'fontawesomefree',
     'djmoney',
     'financial_app',
     'inventory_app',
@@ -77,6 +78,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'dashboard_project.wsgi.application'
+
+# CSS Icons
 
 
 # Database
