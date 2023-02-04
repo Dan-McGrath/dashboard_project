@@ -1,4 +1,71 @@
-p {
-    color: red;
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
 }
+
+:root {
+  --color-primary: #363432;
+  --color-secondary: #196774;
+  --color-third: #027333;
+  --color-fourth: #F0941F;
+  --color-fifth: #EF6024;
+  --color-black: #000;
+  --color-white: #fff;
+  --color-grey1: #90A19D;
+  --color-grey2: #5e585881;
+  --box-shadow-1: 0 3px 15px rgba(0,0,0,0.2);
+}
+
+nav {
+  margin: 25px;
+  background: var(--color-secondary);
+  padding: 16px;
+}
+nav .navItems {
+  list-style: none;
+  display: flex;
+}
+nav .navItems li {
+  margin: 50px;
+}
+nav .navItems li a {
+  text-decoration: none;
+  color: var(--color-tritary);
+  font-size: 24px;
+  font-weight: 400;
+  transition: all 0.5s ease-in-out;
+  position: relative;
+  text-transform: uppercase;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  background-color: var(--color-fourth);
+  color: var(--color-primary);
+}
+nav .navItems li a::before {
+  content: attr(data-item);
+  transition: 0.5s;
+  color: var(--color-white);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 0;
+  overflow: hidden;
+}
+nav .navItems li a:hover::before {
+  width: 100%;
+  transition: all 0.5s ease-in-out;
+}
+
+body {
+  background-color: var(--color-primary);
+  font-size: 1.1rem;
+}
+
+h1, h2, p {
+  color: #d6aa1a;
+}
+
+/* Color Theme Swatches in Hex *//*# sourceMappingURL=style.css.map */
