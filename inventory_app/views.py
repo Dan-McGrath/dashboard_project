@@ -1,18 +1,25 @@
 from django.shortcuts import render
+from django.views import View
 from django.views.generic import ListView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
-from .models import Item, Order, Product
+from .models import Item, Order, Product, ItemStock
 
 # Create your views here.
 
-#Inventory home page
-def home(request):
-    context = {}
+#Inventory home pagez
+class Home(View):
 
-    return render(request, 'inventory_app/inventory_home.html', context)
+    def get(self, request):
+        
+        stock_items = ItemStock.objects.all()
+        context = {
+            'stock_items': stock_items,
+        }
+        return render(request, 'inventory_app/inventory_home.html', context)
 
 
 # Views for Product model
+
 
 
 class ProductList(ListView):
