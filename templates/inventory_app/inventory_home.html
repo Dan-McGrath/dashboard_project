@@ -8,7 +8,29 @@
 
 {% block content %}
 
-<div class="inventoryHome">
-    <h2>Product Inventory</h2>
+<div class="inventoryHome">   
+    <div class="itemsTable">
+        <h2>Item Inventory</h2>
+        <table id="itemsTable">
+            <tr> 
+                <th>Name</th>
+                <th>Description</th>
+                <th>Distibutor</th>
+                <th>Unit Cost</th>
+                <th>Current Available</th>
+            </tr>
+            <tr>
+                {% for item_id in stock_items %}                
+            </tr>
+            <tr>
+                <td>{{ item_id.item.name }}</td>
+                <td>{{ item_id.item.description }}</td>
+                <td>{{ item_id.item.distributor }}</td>
+                <td>{{ item_id.item.unit_cost }}</td>             
+                <td>{{ item_id.item_count }}</td>
+                {% endfor %}
+            </tr>
+        </table>
+    </div>
 </div>
 {% endblock %}
