@@ -1,6 +1,6 @@
 #from djmoney.models.fields import MoneyField
 from django.db import models
-from django import forms
+from django.utils import timezone
 
 
 # Create your models here.
@@ -53,6 +53,10 @@ class Product(models.Model):
         return self.name
 
 
+    class Meta:
+        ordering = ['name']
+        verbose_name = 'products'
+
 # Many-to-Many Products-Items
 class ProductNeeds(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
@@ -76,7 +80,7 @@ class ProductStock(models.Model):
 class Order(models.Model):
     item_id = models.ForeignKey(Item, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=0)
-    date = models.DateField(auto_now_add=True)
+    date = models.DateField(default=timezone.now)
     
 
     def get_total_cost(self):

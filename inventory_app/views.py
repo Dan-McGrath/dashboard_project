@@ -3,6 +3,7 @@ from django.views import View
 from django.views.generic import ListView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from .models import Item, Order, Product, ItemStock
+from .forms import ProductCreateForm
 
 # Create your views here.
 
@@ -24,24 +25,40 @@ class Home(View):
 
 class ProductList(ListView):
     model = Product
-    template = 'inventory_app.products_list.html'
+    template = 'inventory_app/products_list.html'
 
 class ProductCreate(CreateView):
-    model = Product
-    template_name = 'inventory_app.product_create_form.html'
-    fields = ['item_id', 'name', 'description', 'sales_cost', 'product_count']
+    
+    template_name = 'inventory_app/product_create_form.html'
+
+    def product_create_view(self, request):
+        context = {}
+        form = ProductCreateForm(request.POST)
+        if form.is_valid():
+            form.save()
+        context['form'] = form
+        return render(request, self.template_name, context)
+
+
+    
     #success_url = reverse()
 
 class ProductUpdate(UpdateView):
     model = Product
-    template_name = 'inventory_app.product_update_form.html'
-    fields = ['item_id', 'name', 'description', 'sales_cost', 'product_count']
+    template_name = 'inventory_app/product_update_form.html'
+    fields = ['items_needed', 'name', 'description', 'sales_cost', 'unit_cost']
+    
     #success_url = reverse()
 
+    #def get_context_data(self, **kwargs):
+        #context = super().get_context_data(**kwargs)
+        #context['products'] = Product.objects.get(pk=self.kwargs['pk'])
+        #return context
+    
 class ProductDelete(DeleteView):
     model = Product
     template_name = 'inventory_app.product_delete_form.html'
-    fields = ['item_id', 'name', 'description', 'sales_cost', 'product_count']
+    fields = ['items_needed', 'name', 'description', 'sales_cost', 'unit_cost']
     #success_url = reverse() 
 
 #Views for Item model
@@ -96,4 +113,6 @@ class OrderDelete(DeleteView):
 
    
     
+## Form Views
+
 
