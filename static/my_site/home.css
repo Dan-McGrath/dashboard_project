@@ -6,4 +6,20 @@
 }
 .homeWelcome p {
   font-weight: 200;
+}
+
+.tiles-con {
+  display: grid;
+  border: 1px solid black;
+  width: auto;
+  height: 100%;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  gap: 1rem;
+  align-content: space-between;
+  justify-content: center;
+}
+
+.tile {
+  display: grid;
 }/*# sourceMappingURL=home.css.map */

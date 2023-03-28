@@ -1,0 +1,7 @@
+Planning main dashboard page after login happens
+
+- create tiles to display critical/important info 
+    - in further revision could make it customizable to allow the user to display the info they choose
+- allow user to click tile to link to that app and more specifically that table
+
+

@@ -19,6 +19,10 @@
   --box-shadow-1: 0 3px 15px rgba(0,0,0,0.2);
 }
 
+body {
+  display: grid;
+}
+
 nav {
   margin: 25px;
   background: var(--color-secondary);
@@ -32,7 +36,6 @@ nav .navItems {
   list-style: none;
   display: flex;
   justify-content: space-around;
-  position: -webkit-sticky;
   position: sticky;
   flex-direction: row;
   flex-wrap: wrap;

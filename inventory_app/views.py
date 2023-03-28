@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic import ListView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
-from .models import Item, Order, Product, ItemStock
+from django.utils.functional import lazy
+from .models import Item, Order, Product
 from .forms import ProductCreateForm
 
 # Create your views here.
@@ -11,11 +12,9 @@ from .forms import ProductCreateForm
 class Home(View):
 
     def get(self, request):
-        
-        stock_items = ItemStock.objects.all()
-        context = {
-            'stock_items': stock_items,
-        }
+        context = {}
+        context['items'] = Item.objects.all()
+        context['products'] = Product.objects.all()        
         return render(request, 'inventory_app/inventory_home.html', context)
 
 
@@ -28,27 +27,23 @@ class ProductList(ListView):
     template = 'inventory_app/products_list.html'
 
 class ProductCreate(CreateView):
-    
+    model = Product
     template_name = 'inventory_app/product_create_form.html'
-
-    def product_create_view(self, request):
-        context = {}
-        form = ProductCreateForm(request.POST)
-        if form.is_valid():
-            form.save()
-        context['form'] = form
-        return render(request, self.template_name, context)
-
-
+    form_class = ProductCreateForm
     
-    #success_url = reverse()
+    
+   
+
+
 
 class ProductUpdate(UpdateView):
     model = Product
     template_name = 'inventory_app/product_update_form.html'
     fields = ['items_needed', 'name', 'description', 'sales_cost', 'unit_cost']
     
-    #success_url = reverse()
+    #def form_valid(self, form)
+
+    success_url = 'product-list'
 
     #def get_context_data(self, **kwargs):
         #context = super().get_context_data(**kwargs)
@@ -57,31 +52,31 @@ class ProductUpdate(UpdateView):
     
 class ProductDelete(DeleteView):
     model = Product
-    template_name = 'inventory_app.product_delete_form.html'
+    template_name = 'inventory_app/product_delete_form.html'
     fields = ['items_needed', 'name', 'description', 'sales_cost', 'unit_cost']
-    #success_url = reverse() 
+    
 
 #Views for Item model
 
 class ItemList(ListView):
     model = Item
-    template_name = 'inventory_app.item_list.html'
+    template_name = 'inventory_app/item_list.html'
 
 class ItemCreate(CreateView):
     model = Item
-    template_name = 'inventory_app.item_create_form.html'
-    fields = ['name', 'description', 'distributor', 'unit_cost', 'item_count']
+    template_name = 'inventory_app/item_create_form.html'
+    fields = ['name', 'description', 'distributor', 'unit_cost']
     #success_url = reverse()
 
 class ItemUpdate(UpdateView):
     model = Item
-    template_name = 'inventory_app.item_update_form.html'
-    fields = ['name', 'description', 'distributor', 'unit_cost', 'item_count']
+    template_name = 'inventory_app/item_update_form.html'
+    fields = ['name', 'description', 'distributor', 'unit_cost']
 
 class ItemDelete(DeleteView):
     model = Item
-    template_name = 'inventory_app.item_delete_form.html'
-    fields = ['name', 'description', 'distributor', 'unit_cost', 'item_count']
+    template_name = 'inventory_app/item_delete_form.html'
+    fields = ['name', 'description', 'distributor', 'unit_cost']
     #success_url = reverse()
 
 
@@ -90,7 +85,7 @@ class ItemDelete(DeleteView):
 
 class OrderList(ListView):
     model = Order
-    template = 'inventory_app.order_list.html'
+    template = 'inventory_app/order_list.html'
 
 class OrderCreate(CreateView):
     model = Order

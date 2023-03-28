@@ -7,11 +7,29 @@
 {% endblock %}
 
 {% block content %}
+<div class='page-nav nav'>
+    <ol>
+        <li><a href="{% url 'product-list' %}">Products</a><li>
+            <div class='product-nav nav'>
+                <ol>
+                
+                    <li><a href="{% url 'product-create' %}">Create Product</a></li>
+                </ol>
+            </div>
+        <li><a href="{% url 'item-list' %}">Items</a><li>
+            <div class='item-nav nav'>
+                <ol>
+                    <li><a href="{% url 'item-create' %}">Create Item</a></li>
+                </ol>
+            </div>      
+    </ol>
+    
+</div>
 
-<div class="inventoryHome">   
-    <div class="itemsTable">
-        <h2>Item Inventory</h2>
-        <table id="itemsTable">
+<div class="inventory-home">   
+    <div class="items-table">
+        <h2 class='table-header'>Item Inventory</h2>
+        <table id="items-table">
             <tr> 
                 <th>Name</th>
                 <th>Description</th>
@@ -20,14 +38,37 @@
                 <th>Current Available</th>
             </tr>
             <tr>
-                {% for item_id in stock_items %}                
+                {% for item_id in items %}                
             </tr>
             <tr>
-                <td>{{ item_id.item.name }}</td>
-                <td>{{ item_id.item.description }}</td>
-                <td>{{ item_id.item.distributor }}</td>
-                <td>{{ item_id.item.unit_cost }}</td>             
+                <td>{{ item_id.name }}</td>
+                <td>{{ item_id.description }}</td>
+                <td>{{ item_id.distributor }}</td>
+                <td>{{ item_id.unit_cost }}</td>             
                 <td>{{ item_id.item_count }}</td>
+                {% endfor %}
+            </tr>
+        </table>
+    </div>
+    <div class='products-table'>
+        <h2 class='table-header'>Product Inventory</h2>
+        <table id="product-table">
+            <tr> 
+                <th>Name</th>
+                <th>Description</th>
+                <th>Sales Cost</th>
+                <th>Unit Cost</th>
+                <th>Current Available</th>
+            </tr>
+            <tr>
+                {% for product_id in products %}                
+            </tr>
+            <tr>
+                <td>{{ product_id.name }}</td>
+                <td>{{ product_id.description }}</td>
+                <td>{{ product_id.sales_cost }}</td>
+                <td>{{ product_id.unit_cost }}</td>             
+                <td>{{ product_id.product_count }}</td>
                 {% endfor %}
             </tr>
         </table>
