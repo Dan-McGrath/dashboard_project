@@ -31,19 +31,15 @@ class Item(models.Model):
         ordering = ['name']
         verbose_name = 'items'
 
-
-
-
-
 # Product Model
 
 class Product(models.Model):
-    items_needed = models.ManyToManyField(Item, through = 'ProductNeeds')
     name = models.CharField(max_length=30, unique=True)
     description = models.CharField(max_length=50, blank=True)
     sales_cost = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
     unit_cost = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
-    product_count = models.IntegerField(default=0)     
+    product_count = models.IntegerField(default=0)
+    items = models.ManyToManyField(Item, through = 'Product_Items')     
 
     def __str__(self):
         return self.name
@@ -54,11 +50,21 @@ class Product(models.Model):
         verbose_name = 'products'
 
 # Many-to-Many Products-Items
-class ProductNeeds(models.Model):
+class Product_Items(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     item = models.ForeignKey(Item, on_delete = models.CASCADE)
-    items_required = models.IntegerField(default=0)
+    item_qty = models.IntegerField(default=0)
 
+    def __str__(self):
+         return self.item_qty
+    
+
+    """
+    items_required = {}
+    key = name of item selected in form
+    value = integer amount selected in form
+
+    """
             
     def __str__(self):
         return self.product
