@@ -1,3 +1,7 @@
+html {
+  height: 100%;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -17,10 +21,6 @@
   --color-grey1: #90A19D;
   --color-grey2: #5e585881;
   --box-shadow-1: 0 3px 15px rgba(0,0,0,0.2);
-}
-
-body {
-  display: grid;
 }
 
 nav {
@@ -76,6 +76,8 @@ nav .navItems li a:hover::before {
 body {
   background-color: var(--color-primary);
   font-size: 1.1rem;
+  height: inherit;
+  display: grid;
 }
 
 h1, h2, p {

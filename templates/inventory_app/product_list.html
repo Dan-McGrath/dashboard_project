@@ -10,24 +10,25 @@
 <h2>Product Inventory</h2>
 <p><a href="{% url 'product-create' %}">New Product</a></p>
 <table id="product">
+    <h3>Products</h3>
     <tr>
         <th>Name</th>
         <th>Description</th>
         <th>Sales Price</th>
         <th>Current Available</th>
-        <th> </th>
-        <th> </th>
+        <th>Items Needed</th>
     </tr>
     <tr>
-    {% for product in product_list %}
+    {% for product_items in product_needs %}  
     </tr>
     <tr>
-        <td>{{ product.name }}</td>
-        <td>{{ product.description}}</td>
-        <td>{{ product.sales_cost }}</td>
-        <td>{{ product.product_count }}</td>
-        <td><a href="{% url 'product-update' product.pk %}">Edit</a></td>
-        <td><a href="{% url 'product-delete' product.pk %}">Delete</a></td>
+        <td>{{ product_items.product.name }}</td>
+        <td>{{ product_items.product.description}}</td>
+        <td>{{ product_items.product.sales_cost }}</td>
+        <td>{{ product_items.product.product_count }}</td>
+        <td>{{ product_items.product.items }}
+        <td><a href="{% url 'product-update' product_items.product.pk %}">Edit</a></td>
+        <td><a href="{% url 'product-delete' product_items.product.pk %}">Delete</a></td>
         <td></td>
     <tr>
     {% endfor %}

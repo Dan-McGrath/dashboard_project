@@ -8,27 +8,27 @@
 
 {% block content %}
 <div class='page-nav nav'>
-    <ol>
+    <ul class='page-nav-items'>
         <li><a href="{% url 'product-list' %}">Products</a><li>
-            <div class='product-nav nav'>
-                <ol>
+            <div class='sec-nav nav'>
+                <ul>
                 
                     <li><a href="{% url 'product-create' %}">Create Product</a></li>
-                </ol>
+                </ul>
             </div>
         <li><a href="{% url 'item-list' %}">Items</a><li>
-            <div class='item-nav nav'>
-                <ol>
+            <div class='sec-nav nav'>
+                <ul>
                     <li><a href="{% url 'item-create' %}">Create Item</a></li>
-                </ol>
+                </ul>
             </div>      
-    </ol>
+    </ul>
     
 </div>
 
 <div class="inventory-home">   
-    <div class="items-table">
-        <h2 class='table-header'>Item Inventory</h2>
+    <div class="items-table table">
+        <h3 class='table-header'>Item Inventory</h3>
         <table id="items-table">
             <tr> 
                 <th>Name</th>
@@ -50,8 +50,8 @@
             </tr>
         </table>
     </div>
-    <div class='products-table'>
-        <h2 class='table-header'>Product Inventory</h2>
+    <div class='products-table table'>
+        <h3 class='table-header'>Product Inventory</h3>
         <table id="product-table">
             <tr> 
                 <th>Name</th>
