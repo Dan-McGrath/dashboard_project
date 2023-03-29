@@ -1,0 +1,26 @@
+// view full product list including product recipe
+
+make product list view using product model
+create get function that creates querys of data to be displayed
+    
+    class View
+        constructor/Meta
+
+        get(self, request):
+            context = {}
+            context['product] = Product.objects.all()
+
+
+
+
+
+// update specific items/products
+
+make Item/Product class view for detailed view of specific item/product
+    based on record selected
+        call a form class created in form.py
+            allows users to update/delete items/products depending on form called
+        
+
+
+
