@@ -13,9 +13,9 @@
     <tr>
         <th>Name</th>
         <th>Description</th>
-        <th>Sales Price</th>
-        <th>Current Available</th>
-        <th> </th>
+        <th>Item Distributor</th>
+        <th>Unit Cost</th>
+        <th>Item Count</th>
         <th> </th>
     </tr>
     <tr>
@@ -26,6 +26,8 @@
         <td>{{ item.description}}</td>
         <td>{{ item.distributor }}</td>
         <td>{{ item.unit_cost }}</td>
+        <td>{{ item.item_count }} </td>
+
         <td><a href="{% url 'item-update' item.pk %}">Edit</a></td>
         <td><a href="{% url 'item-delete' item.pk %}">Delete</a></td>
         <td></td>

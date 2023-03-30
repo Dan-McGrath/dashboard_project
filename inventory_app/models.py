@@ -23,7 +23,7 @@ class Item(models.Model):
         return self.name
     
     def get_absolute_url(self):
-        return reverse("item-detail", kwargs={"pk": self.pk})
+        return reverse("item-list", kwargs={"pk": self.pk})
     
 
     
@@ -43,6 +43,10 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self):
+        return reverse("product-list", kwargs={"pk": self.pk})
+    
 
 
     class Meta:
