@@ -82,7 +82,7 @@ target/
 *.pyc
 __pycache__/
 local_settings.py
-
+.kolo
 .env
 db.sqlite3
 *.scss
