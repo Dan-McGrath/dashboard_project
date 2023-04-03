@@ -20,7 +20,7 @@ class Item(models.Model):
 
     
     def __str__(self):
-        return self.name
+        return self.name + ' '
     
     def get_absolute_url(self):
         return reverse("item-list", kwargs={"pk": self.pk})
@@ -42,7 +42,7 @@ class Product(models.Model):
     items = models.ManyToManyField(Item, through = 'Product_Items')     
 
     def __str__(self):
-        return self.name
+        return ', '.join([str(item.name) for item in self.items.all()])
     
     def get_absolute_url(self):
         return reverse("product-list", kwargs={"pk": self.pk})
@@ -62,6 +62,8 @@ class Product_Items(models.Model):
     def __str__(self):
          return self.item_qty
     
+    class Meta:
+        unique_together = ('product', 'item')
 
     """
     items_required = {}

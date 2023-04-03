@@ -26,7 +26,7 @@
         <td>{{ product_items.product.description}}</td>
         <td>{{ product_items.product.sales_cost }}</td>
         <td>{{ product_items.product.product_count }}</td>
-        <td>{{ product_items.product.items }}
+        <td>{{ product_items.product }}
         <td><a href="{% url 'product-update' product_items.product.pk %}">Edit</a></td>
         <td><a href="{% url 'product-delete' product_items.product.pk %}">Delete</a></td>
         <td></td>
