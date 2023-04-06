@@ -20,7 +20,7 @@ class Item(models.Model):
 
     
     def __str__(self):
-        return self.name + ' '
+        return self.name
     
     def get_absolute_url(self):
         return reverse("item-list", kwargs={"pk": self.pk})
@@ -29,7 +29,7 @@ class Item(models.Model):
     
     class Meta:
         ordering = ['name']
-        verbose_name = 'items'
+        verbose_name = 'item'
 
 # Product Model
 
@@ -39,31 +39,36 @@ class Product(models.Model):
     sales_cost = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
     unit_cost = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
     product_count = models.IntegerField(default=0)
-    items = models.ManyToManyField(Item, through = 'Product_Items')     
+    items = models.ManyToManyField(Item, through = 'Product_Items', related_name='products')     
 
     def __str__(self):
-        return ', '.join([str(item.name) for item in self.items.all()])
+        #return ', '.join([str(item.name) for item in self.items.all()])
+        return f'{self.name}'
     
     def get_absolute_url(self):
         return reverse("product-list", kwargs={"pk": self.pk})
     
-
+    def get_item_list(self):
+        pass 
 
     class Meta:
         ordering = ['name']
-        verbose_name = 'products'
+        verbose_name = 'product'
 
 # Many-to-Many Products-Items
 class Product_Items(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     item = models.ForeignKey(Item, on_delete = models.CASCADE)
-    item_qty = models.IntegerField(default=0)
+    item_qty = models.IntegerField(default=1)
 
     def __str__(self):
-         return self.item_qty
-    
+         return f'{self.product.name}'
+
+
     class Meta:
         unique_together = ('product', 'item')
+        verbose_name = 'recipe'
+
 
     """
     items_required = {}
@@ -72,8 +77,7 @@ class Product_Items(models.Model):
 
     """
             
-    def __str__(self):
-        return self.product
+    
     
 
 
