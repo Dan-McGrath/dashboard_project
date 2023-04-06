@@ -17,18 +17,21 @@
         <th>Sales Price</th>
         <th>Current Available</th>
         <th>Items Needed</th>
+        <th>Item Quantity</th>
     </tr>
     <tr>
-    {% for product_items in product_needs %}  
+    {% for product in products %}  
+    
     </tr>
     <tr>
-        <td>{{ product_items.product.name }}</td>
-        <td>{{ product_items.product.description}}</td>
-        <td>{{ product_items.product.sales_cost }}</td>
-        <td>{{ product_items.product.product_count }}</td>
-        <td>{{ product_items.product }}
-        <td><a href="{% url 'product-update' product_items.product.pk %}">Edit</a></td>
-        <td><a href="{% url 'product-delete' product_items.product.pk %}">Delete</a></td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.description}}</td>
+        <td>{{ product.sales_cost }}</td>
+        <td>{{ product.product_count }}</td>
+        <td>{% for item in product.items.all %} {{ item.name }}{% endfor %}</td>
+        <td>{{ product.item_qty}}
+        <td><a href="{% url 'product-update' product.pk %}">Edit</a></td>
+        <td><a href="{% url 'product-delete' product.pk %}">Delete</a></td>
         <td></td>
     <tr>
     {% endfor %}
@@ -36,3 +39,4 @@
 
 
 {% endblock %}
+

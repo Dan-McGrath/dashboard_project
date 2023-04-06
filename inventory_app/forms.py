@@ -13,7 +13,21 @@ class ProductCreateForm(forms.ModelForm):
         queryset = Item.objects.all(),
         widget = forms.CheckboxSelectMultiple
     )
-
+    
+class RecipeCreateForm(forms.ModelForm):
+    class Meta:
+        model = Product_Items
+        fields = ['product', 'item', 'item_qty']
+    
+    items = forms.ModelMultipleChoiceField(
+        queryset = Item.objects.all(),
+        widget = forms.CheckboxSelectMultiple
+    )
+    
+# class ProductCreateForm(forms.ModelForm):
+#     class Meta:
+#         model = Product_Items
+#         fields = ['']
     
     
     

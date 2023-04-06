@@ -28,11 +28,12 @@ class ProductList(ListView):
 
     def get(self, request):
         context = {}
-        context['product_needs'] = Product_Items.objects.all()
+        context['recipes'] = Product_Items.objects.all()
+        context['products'] = Product.objects.all()
         return render(request, 'inventory_app/product_list.html', context)
 
 class ProductCreate(CreateView):
-    model = Product
+    model = Product_Items
     template_name = 'inventory_app/product_create_form.html'
     form_class = ProductCreateForm
     success_url = reverse_lazy('product-list')    
